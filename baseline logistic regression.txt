@@ -1,0 +1,16 @@
+##build baseline logistic regression
+from sklearn.linear_model import LogisticRegression
+lr_model = LogisticRegression(solver='liblinear')
+lr_model.fit(X_train, y_train)
+
+from sklearn.metrics import (plot_confusion_matrix,
+                            classification_report,
+                            plot_precision_recall_curve,
+                            plot_roc_curve)
+def report(model):
+    preds = model.predict(X_test)
+    print(classification_report(preds, y_test))
+    plot_confusion_matrix(model, X_test, y_test)
+    
+print("LOGISTIC REGRESSION MODEL")
+report(lr_model)
